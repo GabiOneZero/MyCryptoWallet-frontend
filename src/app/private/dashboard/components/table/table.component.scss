@@ -4,7 +4,7 @@ table {
 }
 
 ::ng-deep .mat-header-cell{
-    color: white;
+    color:#78a6d1;
     background-color: #172F59;
     font-size: 1.2em;
 }
@@ -14,7 +14,7 @@ table {
 }
 
 .table-container{
-    width: 80%;
+    width: 70%;
     margin: auto;
 }
 
@@ -22,10 +22,6 @@ table {
     width: 20%!important;
 }
 
-::ng-deep .table-paginator div{
-    background-color: #172F59;
-    color: white;
-}
 
 ::ng-deep .mat-paginator-range-actions>button:disabled .mat-button-wrapper>svg{
     color: grey;
@@ -60,6 +56,10 @@ td, th {
     width: 2em;
 }
 
+.row-currencyName{
+    margin-right: 0.8em!important;
+}
+
 .row-name-container p{
     margin: 0;
 }
@@ -74,5 +74,22 @@ td, th {
     width: 1.5em;   
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.row-button{
+    border: none;
+    background: none;
+    color: white;
+    padding: 0.3em 1.5em;
+    margin-right: 1em;
+    font-size: 1.2em;
+}
+
+.row-buy-button{
+    background-color: goldenrod;
+}
+
+.row-sell-button{
+    background-color: rgb(67, 147, 179);
 }
 
