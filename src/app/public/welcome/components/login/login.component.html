@@ -1,0 +1,23 @@
+<div class="login login--background">
+    <h1 class="login--title">My CryptoWallet</h1>
+    <mat-card class="login login--card">        
+        <form [formGroup]="formGroup" class="login login--form" method="post">
+            <input class="login--input"
+                name="username"
+                formControlName="username"
+                type="text"
+                placeholder="Username" />
+            <span class="error error-username">{{getError('username')}}</span>
+            <input class="login--input"
+                name="password"
+                formControlName="password"
+                type="password"
+                placeholder="Password" />
+            <span class="error error-password">{{getError('password')}}</span>
+            <button type="submit" 
+                (click)="login()"
+                [disabled]="formGroup.invalid">Login</button>
+            <a href="" class="login--link">Don't you have an account?</a>
+        </form>
+    </mat-card>
+</div>

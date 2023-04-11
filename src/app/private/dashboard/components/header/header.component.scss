@@ -1,0 +1,28 @@
+.navbar--body{
+    height: 12vh;
+    background: rgb(195,20,50);
+    background: linear-gradient(90deg, rgb(218, 63, 39) 0%, rgb(65, 7, 59) 100%); 
+}
+
+.navbar--body h1{
+    font-size: 1.2em;
+}
+
+.navbar{
+    color: white;
+}
+
+.navbar--body{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar--user{
+    display: flex;
+    align-items: center;
+}
+
+.navbar--user > button{
+    margin-left: 2em;
+    border: 1px solid lightgrey;
+}
