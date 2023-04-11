@@ -11,14 +11,21 @@
   <div class="table-main mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
 
+      <!-- Icon Column -->
+      <ng-container matColumnDef="icon">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header [ngStyle]="{'width' : width + '%' }"> </th>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{'width' : width + '%' }"> 
+            <img src="{{row.icon}}" alt="icon" class="row-currency-icon">
+        </td>
+      </ng-container>
+
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let row" > 
           <div class="row-name-container" >
-            <img src="{{row.icon}}" alt="icon" class="row-currency-info">
-            <p class="row-currencyName row-currency-info">{{row.currencyName}}</p>
-            <p class="row-acronym row-currency-info">{{row.acronym}}</p>            
+            <p class="row-currencyName">{{row.currencyName}}</p>
+            <p class="row-acronym ">{{row.acronym}}</p>            
           </div>
         </td>
       </ng-container>

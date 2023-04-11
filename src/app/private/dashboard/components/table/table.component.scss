@@ -53,15 +53,13 @@ td, th {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: start;
 }
-.row-currency-info{
-    margin-right: 0.8em!important;
-}
-
-.row-name-container img{
+.row-currency-icon{
     height: 2em;
     width: 2em;
 }
+
 .row-name-container p{
     margin: 0;
 }

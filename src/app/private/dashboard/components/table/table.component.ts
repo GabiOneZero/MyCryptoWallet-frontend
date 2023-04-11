@@ -1,4 +1,4 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CurrencyInterface } from '../../models/currency.model';
 import { CurrencyService } from '../../services/currency.service';
@@ -9,8 +9,9 @@ import { CurrencyService } from '../../services/currency.service';
   templateUrl: 'table.component.html',
 })
 export class TableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'value', 'buySell'];
-  dataSource: MatTableDataSource<CurrencyInterface>;
+  displayedColumns: string[] = ['icon', 'name', 'value', 'buySell']
+  dataSource: MatTableDataSource<CurrencyInterface>
+  width: number = 5
 
   constructor( private currencyService: CurrencyService) { }
 
@@ -20,21 +21,25 @@ export class TableComponent implements AfterViewInit {
     .subscribe(
       (data) => {
         console.log("HELLO lista de comentarios")
-        console.log(data);
+        console.log(data)
         data.forEach(element => {
           element.icon = "/assets/images/" + element.icon
         })
         this.dataSource = new MatTableDataSource(data);
+        this.dataSource.filterPredicate = function(data, filter: string): boolean {
+          return data.currencyName.toLowerCase().includes(filter) || data.acronym.toLowerCase().includes(filter);
+        }
       },
       (err) => {
-        this.handleError(err);
+        this.handleError(err)
       }
-    );
+    )    
+    
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(event: Event) {  
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase()
   }
 
   handleError(error: any) {
