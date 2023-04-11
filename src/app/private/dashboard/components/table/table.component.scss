@@ -1,0 +1,80 @@
+table {
+    width: 100%;
+    background-color:#194A77;
+}
+
+::ng-deep .mat-header-cell{
+    color: white;
+    background-color: #172F59;
+    font-size: 1.2em;
+}
+
+::ng-deep .mat-cell{
+    color: white;
+}
+
+.table-container{
+    width: 80%;
+    margin: auto;
+}
+
+.table-searchbar{
+    width: 20%!important;
+}
+
+::ng-deep .table-paginator div{
+    background-color: #172F59;
+    color: white;
+}
+
+::ng-deep .mat-paginator-range-actions>button:disabled .mat-button-wrapper>svg{
+    color: grey;
+}
+
+::ng-deep .mat-select-panel{
+    background-color: #194A77;
+}
+
+::ng-deep .mat-select-panel mat-option{
+    color: white;
+}
+
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td, th {
+    width: 25%;
+}
+
+.row-name-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.row-currency-info{
+    margin-right: 0.8em!important;
+}
+
+.row-name-container img{
+    height: 2em;
+    width: 2em;
+}
+.row-name-container p{
+    margin: 0;
+}
+
+.row-acronym{
+    color: #51799e;
+    font-weight: bold;
+}
+
+.currency-icon{
+    height: 1.5em;
+    width: 1.5em;   
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+

@@ -1,7 +1,8 @@
 <mat-toolbar class="navbar navbar--body">
-    <h1>My Application</h1>
+    <h1>My CryptoWallet</h1>
     <div class="navbar navbar--user">
-        <p>Hola, usuario</p>
-        <button mat-stroked-button>Log out</button>
+        <p>Welcome, {{this.fullname}}.</p>
+        <p>Your balance: <span class="navbar--balance">{{ this.formatedBalance}}€</span></p>         
+        <button class="navbar--logout">Log out</button>
     </div>
 </mat-toolbar>

@@ -7,6 +7,9 @@ import { TableComponent } from './components/table/table.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     DashboardRoutingModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule
   ]
 })
 export class DashboardModule { }

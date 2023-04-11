@@ -1,11 +1,17 @@
 .navbar--body{
     height: 12vh;
-    background: rgb(195,20,50);
-    background: linear-gradient(90deg, rgb(218, 63, 39) 0%, rgb(65, 7, 59) 100%); 
+    background-image: url('../../../../../img/background.png');
+    background-position: bottom;
+    background-size: cover; 
 }
 
 .navbar--body h1{
     font-size: 1.2em;
+    padding-left: 1em;
+}
+
+.navbar--body p{
+    margin: 0;
 }
 
 .navbar{
@@ -14,15 +20,23 @@
 
 .navbar--body{
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 .navbar--user{
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    width: 50%;
 }
 
 .navbar--user > button{
-    margin-left: 2em;
-    border: 1px solid lightgrey;
+    border: 2px solid white;
+    background: none;
+    color: white;
+    padding: 0.5em 0.8em;
+}
+
+.navbar--balance{
+    color: goldenrod
 }

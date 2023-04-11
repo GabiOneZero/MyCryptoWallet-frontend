@@ -1,1 +1,42 @@
-<p>register works!</p>
+<div class="register register--background">
+    <h1 class="register--title">My CryptoWallet</h1>
+    <mat-card class="register register--card">        
+        <form [formGroup]="formGroup" class="register register--form" method="post">
+            <div class="title-container">
+                <h1 class="register--card-title">Welcome</h1>
+                <h3 class="register--card-title">Please enter your personal info</h3>
+            </div>            
+            <input class="register--input"
+                name="username"
+                formControlName="username"
+                type="text"
+                placeholder="Username" />
+            <span class="error error-username">{{getError('username')}}</span>
+            <input class="register--input"
+                name="password"
+                formControlName="password"
+                type="password"
+                placeholder="Password" />
+            <input class="register--input"
+                name="repeatPass"
+                formControlName="repeatPass"
+                type="password"
+                placeholder="Repeat password" />
+            <input class="register--input"
+                name="email"
+                formControlName="email"
+                type="email"
+                placeholder="Email" />
+            <input class="register--input"
+                name="fullname"
+                formControlName="fullname"
+                type="text"
+                placeholder="Fullname" />
+            <span class="error error-fullname">{{getError('fullname')}}</span>
+            <button type="submit" 
+                (click)="register()"
+                [disabled]="formGroup.invalid">SIGN UP</button>
+            <a href="" class="register--link">Already have an account?</a>
+        </form>
+    </mat-card>
+</div>
