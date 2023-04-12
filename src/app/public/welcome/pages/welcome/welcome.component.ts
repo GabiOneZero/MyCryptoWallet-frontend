@@ -7,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  isLogged : boolean = false
+  showLogin : boolean = true
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  navigateToRegister(event: boolean){
+    this.showLogin = event
+  }
+  navigateToLogin(event: boolean){
+    this.showLogin = event
+  }
 }

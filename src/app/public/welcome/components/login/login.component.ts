@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   public formGroup: FormGroup;
+
+  @Output() eventEmitter = new EventEmitter<boolean>()
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -38,5 +40,9 @@ export class LoginComponent implements OnInit {
   login() {
     const user = this.formGroup.value;
     console.log(user);
+  }
+
+  navigateToRegister(){
+    this.eventEmitter.emit(false)
   }
 }

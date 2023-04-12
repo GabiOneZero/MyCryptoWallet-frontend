@@ -32,7 +32,7 @@
     width: 80%;
 }
 
-.register--form > button {
+.register--form > .register--button {
     background: linear-gradient(-190deg, rgb(252, 198, 72) 0%, rgb(161, 88, 14) 100%);
     color: white;
     height: 2.5em;
@@ -45,11 +45,11 @@
     transition: 0.5s;
 }
 
-.register--form > button:disabled {
+.register--form > .register--button:disabled {
     background: linear-gradient(-190deg, rgb(134, 123, 101) 0%, rgb(136, 114, 93) 100%);
 }
 
-.register--form > button:enabled:hover {
+.register--form > .register--button:enabled:hover {
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
 }
 
@@ -78,6 +78,9 @@
 .register--link{
     color: white;
     align-self: center;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
 .error{

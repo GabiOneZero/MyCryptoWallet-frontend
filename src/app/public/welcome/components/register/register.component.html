@@ -34,9 +34,10 @@
                 placeholder="Fullname" />
             <span class="error error-fullname">{{getError('fullname')}}</span>
             <button type="submit" 
+                class="register--button"
                 (click)="register()"
                 [disabled]="formGroup.invalid">SIGN UP</button>
-            <a href="" class="register--link">Already have an account?</a>
+                <button class="register--link" (click)="navigateToLogin()">Already have an account?</button>
         </form>
     </mat-card>
 </div>

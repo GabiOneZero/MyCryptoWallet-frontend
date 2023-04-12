@@ -3,8 +3,8 @@
     <mat-card class="login login--card">        
         <form [formGroup]="formGroup" class="login login--form" method="post">
             <div class="title-container">
-                <h1 class="register--card-title">Welcome</h1>
-                <h3 class="register--card-title">Log in to your account</h3>
+                <h1 class="login--card-title">Welcome</h1>
+                <h3 class="login--card-title">Log in to your account</h3>
             </div>  
             <input class="login--input"
                 name="username"
@@ -18,10 +18,11 @@
                 type="password"
                 placeholder="Password" />
             <span class="error error-password">{{getError('password')}}</span>
-            <button type="submit" 
+            <button class="login--button"
+                type="submit" 
                 (click)="login()"
                 [disabled]="formGroup.invalid">LOGIN</button>
-            <a href="" class="login--link">Don't you have an account?</a>
+            <button class="login--link" (click)="navigateToRegister()">Don't you have an account?</button>
         </form>
     </mat-card>
 </div>

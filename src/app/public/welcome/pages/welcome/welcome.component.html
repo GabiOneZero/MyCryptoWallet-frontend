@@ -1,4 +1,10 @@
 <div class="page-container"></div>
 
-<app-login *ngIf="isLogged" class="child-component"></app-login>
-<app-register *ngIf="!isLogged" class="child-component"></app-register>
+<app-login *ngIf="showLogin" 
+            class="child-component" 
+            (eventEmitter)="navigateToRegister($event)">
+</app-login>
+<app-register *ngIf="!showLogin" 
+              class="child-component"
+              (eventEmitter)="navigateToLogin($event)">
+</app-register>
