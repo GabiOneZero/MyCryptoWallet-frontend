@@ -5,39 +5,54 @@
             <div class="title-container">
                 <h1 class="register--card-title">Welcome</h1>
                 <h3 class="register--card-title">Please enter your personal info</h3>
-            </div>            
+            </div>                  
+            <!-- USERNAME Imput -->
             <input class="register--input"
                 name="username"
                 formControlName="username"
                 type="text"
                 placeholder="Username" />
             <span class="error error-username">{{getError('username')}}</span>
-            <input class="register--input"
-                name="password"
-                formControlName="password"
-                type="password"
-                placeholder="Password" />
-            <input class="register--input"
-                name="repeatPass"
-                formControlName="repeatPass"
-                type="password"
-                placeholder="Repeat password" />
+                    
+            <!-- PASSWORD Imput -->
+            <div class="register--pass-container">
+                <input class="register--input register--input-pass"
+                    name="password"
+                    formControlName="password"
+                    type="password"
+                    placeholder="Password" 
+                    [type]="showPass ? 'text' : 'password'" 
+                    />
+                <span class="error error-password">{{getError('password')}}</span>
+                <button class="register--pass-button" 
+                        (mousedown)="showPassword()"
+                        (mouseup)="showPassword()">
+                    <img src="{{showPass ? '/assets/images/view.png' : '/assets/images/hidden.png'}}" alt="">
+                </button>
+            </div>
+
+             <!-- FULLNAME Imput -->
+             <input class="register--input"
+                    name="fullname"
+                    formControlName="fullname"
+                    type="text"
+                    placeholder="Fullname" />
+            <span class="error error-fullname">{{getError('fullname')}}</span>
+         
+            <!-- EMAIL Imput -->
             <input class="register--input"
                 name="email"
                 formControlName="email"
                 type="email"
                 placeholder="Email" />
-            <input class="register--input"
-                name="fullname"
-                formControlName="fullname"
-                type="text"
-                placeholder="Fullname" />
-            <span class="error error-fullname">{{getError('fullname')}}</span>
+            <span class="error error-ema">{{getError('email')}}</span>
+            
+            <!-- SUBMIT Imput -->
             <button type="submit" 
                 class="register--button"
                 (click)="register()"
                 [disabled]="formGroup.invalid">SIGN UP</button>
-                <button class="register--link" (click)="navigateToLogin()">Already have an account?</button>
+            <button class="register--link" (click)="navigateToLogin()">Already have an account?</button>
         </form>
     </mat-card>
 </div>

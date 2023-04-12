@@ -11,13 +11,11 @@
                 formControlName="username"
                 type="text"
                 placeholder="Username" />
-            <span class="error error-username">{{getError('username')}}</span>
             <input class="login--input"
                 name="password"
                 formControlName="password"
                 type="password"
                 placeholder="Password" />
-            <span class="error error-password">{{getError('password')}}</span>
             <button class="login--button"
                 type="submit" 
                 (click)="login()"

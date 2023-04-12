@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private toast: ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -31,17 +33,6 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required, Validators.minLength(minInputLength)]],
       password: ['', [Validators.required, Validators.minLength(minInputLength)]]
     });
-  }
-
-  public getError(controlName: string): string {
-    let error = '';
-    const control = this.formGroup.get(controlName);
-    if (!!control) {
-      if (control.touched && control.errors != null) {
-      error = 'Please, field must contain 4 or more characters';
-      }
-    }    
-    return error;
   }
 
   login() {
@@ -59,10 +50,11 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('balance', JSON.stringify(data.balance));
             console.log("Logged Succesfully")
             this.emitterSpinner.emit(true)
-            console.log("Antes del timeout")
+            console.log("Before timeout")
             setTimeout(this.navigateToDashboard, 1500, this.emitterLogin, this.emitterSpinner, this.router);    
           }else{
-            console.log("Usuario not found")
+            this.toast.error("Username or Password incorrect", '', {timeOut: 3000})
+            console.log("User not found")
           }
         },
         (err) => {

@@ -55,8 +55,8 @@
 }
 
 .register--input{
-    border: none;
     background: none;
+    border: 1px solid transparent;
     border-bottom: 1px solid white;
     padding: 0.8em;
     color: white;
@@ -84,6 +84,10 @@
     cursor: pointer;
 }
 
+.register--link:hover{
+    text-decoration: underline;
+}
+
 .error{
     color: white;
     background-color: rgb(234, 96, 96);
@@ -95,6 +99,36 @@
     padding: 0em 0.5em;
 }
 
+.error-username{
+    transform: translate(73%, -300%);
+}
 .error-password{
-    transform: translate(50%, -75%);
+    transform: translate(100%, -20%);
+}
+.error-fullname{
+    transform: translate(73%, 30%);
+}
+.error-email{
+    transform: translate(73%, 220%);
+}
+
+.register--pass-container{
+    position: relative;
+}
+
+.register--pass-button{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border: none;
+    background: none;
+}
+
+.register--pass-button > img{
+    width: 2em;
+    height: 2em;
+}
+
+.register--input-pass{
+    width: 90%;
 }
