@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,11 @@ export class LoginComponent implements OnInit {
 
   @Output() eventEmitter = new EventEmitter<boolean>()
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.buildForm()
@@ -40,6 +46,32 @@ export class LoginComponent implements OnInit {
   login() {
     const user = this.formGroup.value;
     console.log(user);
+    this.loginService
+      .login(user.username, user.password)
+      .subscribe(
+        (data) => {
+          if (!!data) {
+            sessionStorage.setItem('userId', JSON.stringify(data.userId));
+            sessionStorage.setItem('username', JSON.stringify(data.username));
+            sessionStorage.setItem('email', JSON.stringify(data.email));
+            sessionStorage.setItem('fullname', JSON.stringify(data.fullname));
+            sessionStorage.setItem('balance', JSON.stringify(data.balance));
+            console.log("Logged Succesfully")
+            this.router.navigate(['/dashboard'])
+          }else{
+            console.log("Usuario not found")
+          }
+        },
+        (err) => {
+          this.handleError(err);
+        }
+      );
+  }
+
+  handleError(error: any) {
+    if (error.status === 500) {
+       console.log(error)
+    }
   }
 
   navigateToRegister(){

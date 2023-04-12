@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserLoggedGuard } from './private/user-logged.guard';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate: [UserLoggedGuard],
     loadChildren: () =>
       import('./private/private.module')
       .then((moduleRoute) => moduleRoute.PrivateModule),
