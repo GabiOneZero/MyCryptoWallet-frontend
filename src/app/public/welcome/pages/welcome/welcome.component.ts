@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class WelcomeComponent implements OnInit {
 
   showLogin : boolean = true
+  showSpinner : boolean = false
 
   constructor() { }
 
@@ -19,5 +20,8 @@ export class WelcomeComponent implements OnInit {
   }
   navigateToLogin(event: boolean){
     this.showLogin = event
+  }
+  navigateToDashboard(event: boolean){
+    this.showSpinner = event
   }
 }
