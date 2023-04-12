@@ -4,4 +4,6 @@ export interface CurrencyInterface {
     value: number;
     acronym: string;
     icon: string;
+    formatedValue: string;
+    amount: number
   }

@@ -10,12 +10,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { BuymodalComponent } from './components/buymodal/buymodal.component';
+import { SellmodalComponent } from './components/sellmodal/sellmodal.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     TableComponent,
-    DashboardComponent
+    DashboardComponent,
+    BuymodalComponent,
+    SellmodalComponent
   ],
   imports: [
     CommonModule,
