@@ -37,6 +37,31 @@
     padding: 0.5em 0.8em;
 }
 
+.navbar--user > button:hover{
+    border: 2px solid white;
+    background: white;
+    color: #194A77;
+    padding: 0.5em 0.8em;
+}
+
 .navbar--balance{
-    color: goldenrod
+    color: goldenrod;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+}
+
+.navbar--balance:hover{
+    text-decoration: underline;
+}
+
+.navbar--logo{
+    width: 2em;
+    height: 2em;
+}
+
+.navbar--app-title{
+    display: flex;
+    align-items: center;
 }

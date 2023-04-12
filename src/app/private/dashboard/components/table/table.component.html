@@ -33,16 +33,22 @@
       <!-- Value Column -->
       <ng-container matColumnDef="value">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Value </th>
-        <td mat-cell *matCellDef="let row"> {{row.value}}€ </td>
+        <td mat-cell *matCellDef="let row"> {{row.formatedValue}}€ </td>
       </ng-container>      
 
       <!-- Buy/Sell Column -->
       <ng-container matColumnDef="buySell">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let row"> 
-          <button class="row-button row-buy-button">Buy</button>  
-          <button class="row-button row-sell-button">Sell</button>
+          <button class="row-button row-buy-button" (click)="buy(row.currencyId)">Buy</button>  
+          <button class="row-button row-sell-button" (click)="sell(row.currencyId)">Sell</button>
         </td>
+      </ng-container>
+
+      <!-- In wallet Column -->
+      <ng-container matColumnDef="inWallet">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>In wallet</th>
+        <td mat-cell *matCellDef="let row"> {{row.amount}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

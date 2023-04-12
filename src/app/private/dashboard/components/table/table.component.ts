@@ -2,6 +2,9 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CurrencyInterface } from '../../models/currency.model';
 import { CurrencyService } from '../../services/currency.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BuymodalComponent } from '../buymodal/buymodal.component';
+import { SellmodalComponent } from '../sellmodal/sellmodal.component';
 
 @Component({
   selector: 'app-table',
@@ -9,11 +12,14 @@ import { CurrencyService } from '../../services/currency.service';
   templateUrl: 'table.component.html',
 })
 export class TableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['icon', 'name', 'value', 'buySell']
+  displayedColumns: string[] = ['icon', 'name', 'value', 'buySell', 'inWallet']
   dataSource: MatTableDataSource<CurrencyInterface>
-  width: number = 5
+  width: number = 8
+  value: number
 
-  constructor( private currencyService: CurrencyService) { }
+  constructor( 
+    private currencyService: CurrencyService,
+    private dialog: MatDialog) { }
 
   ngAfterViewInit() {
     this.currencyService
@@ -24,6 +30,11 @@ export class TableComponent implements AfterViewInit {
         console.log(data)
         data.forEach(element => {
           element.icon = "/assets/images/" + element.icon
+          this.value = +element.value
+          element.formatedValue =  this.value.toLocaleString('es-ES', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })
         })
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.filterPredicate = function(data, filter: string): boolean {
@@ -46,6 +57,14 @@ export class TableComponent implements AfterViewInit {
     if (error.status === 500) {
        console.log(error)
     }
+  }
+
+  buy(currencyId: string){
+    this.dialog.open(BuymodalComponent, {data: {currencyId : currencyId}})
+  }
+
+  sell(currencyId: string){
+    this.dialog.open(SellmodalComponent, {data: {currencyId : currencyId}})
   }
 }
 

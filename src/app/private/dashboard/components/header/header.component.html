@@ -1,8 +1,11 @@
 <mat-toolbar class="navbar navbar--body">
-    <h1>My CryptoWallet</h1>
+    <div class="navbar--app-title">
+        <img src="/assets/images/logo.png" alt="Logo" class="navbar--logo">
+        <h1>My CryptoWallet</h1>
+    </div>
     <div class="navbar navbar--user">
-        <p>Welcome, {{this.fullname}}.</p>
-        <p>Your balance: <span class="navbar--balance">{{ this.formatedBalance}}€</span></p>         
-        <button class="navbar--logout">Log out</button>
+        <p>Welcome, {{this.fullname}}</p>
+        <p>Your balance: <button class="navbar--balance">{{ this.formatedBalance}}€</button></p>         
+        <button class="navbar--logout" (click)="logout()">Log out</button>
     </div>
 </mat-toolbar>

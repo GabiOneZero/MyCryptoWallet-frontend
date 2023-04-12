@@ -21,20 +21,6 @@ table {
 .table-searchbar{
     width: 20%!important;
 }
-
-
-::ng-deep .mat-paginator-range-actions>button:disabled .mat-button-wrapper>svg{
-    color: grey;
-}
-
-::ng-deep .mat-select-panel{
-    background-color: #194A77;
-}
-
-::ng-deep .mat-select-panel mat-option{
-    color: white;
-}
-
   
 .mat-form-field {
     font-size: 14px;
@@ -83,6 +69,11 @@ td, th {
     padding: 0.3em 1.5em;
     margin-right: 1em;
     font-size: 1.2em;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25) inset;
+}
+
+.row-button:hover{
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .row-buy-button{
