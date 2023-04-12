@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public formGroup: FormGroup;
 
-  @Output() eventEmitter = new EventEmitter<boolean>()
+  @Output() emitterSpinner = new EventEmitter<boolean>()
+  @Output() emitterLogin = new EventEmitter<boolean>()
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,7 +58,9 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('fullname', JSON.stringify(data.fullname));
             sessionStorage.setItem('balance', JSON.stringify(data.balance));
             console.log("Logged Succesfully")
-            this.router.navigate(['/dashboard'])
+            this.emitterSpinner.emit(true)
+            console.log("Antes del timeout")
+            setTimeout(this.navigateToDashboard, 1500, this.emitterLogin, this.emitterSpinner, this.router);    
           }else{
             console.log("Usuario not found")
           }
@@ -75,6 +78,13 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToRegister(){
-    this.eventEmitter.emit(false)
+    this.emitterLogin.emit(false)
+  }
+
+  navigateToDashboard(emitterLogin: EventEmitter<boolean>, emitterSpinner: EventEmitter<boolean>, router: Router){  
+    emitterLogin.emit(false) 
+    emitterSpinner.emit(false) 
+    router.navigate(['/dashboard'])
+    console.log("Waiting...TimeOut")    
   }
 }

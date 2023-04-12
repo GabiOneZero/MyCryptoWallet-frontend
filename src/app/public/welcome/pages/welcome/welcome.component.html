@@ -2,8 +2,12 @@
 
 <app-login *ngIf="showLogin" 
             class="child-component" 
-            (eventEmitter)="navigateToRegister($event)">
+            (emitterLogin)="navigateToRegister($event)"
+            (emitterSpinner)="navigateToDashboard($event)">
 </app-login>
+
+<div *ngIf="showSpinner" class="spinner"></div>
+
 <app-register *ngIf="!showLogin" 
               class="child-component"
               (eventEmitter)="navigateToLogin($event)">
