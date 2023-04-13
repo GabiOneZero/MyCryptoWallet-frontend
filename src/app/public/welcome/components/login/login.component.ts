@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('userId', JSON.stringify(data.userId));
             sessionStorage.setItem('username', JSON.stringify(data.username));
             sessionStorage.setItem('email', JSON.stringify(data.email));
+            sessionStorage.setItem('password', JSON.stringify(data.password));
+            console.log('################################')
+            console.log(sessionStorage.getItem('password'))
             sessionStorage.setItem('fullname', JSON.stringify(data.fullname));
             sessionStorage.setItem('balance', JSON.stringify(data.balance));
             console.log("Logged Succesfully")

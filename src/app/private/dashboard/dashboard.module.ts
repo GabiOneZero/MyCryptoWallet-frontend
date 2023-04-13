@@ -8,10 +8,11 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { BuymodalComponent } from './components/buymodal/buymodal.component';
 import { SellmodalComponent } from './components/sellmodal/sellmodal.component';
+import { MoneymodalComponent } from './components/moneymodal/moneymodal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SellmodalComponent } from './components/sellmodal/sellmodal.component';
     TableComponent,
     DashboardComponent,
     BuymodalComponent,
-    SellmodalComponent
+    SellmodalComponent,
+    MoneymodalComponent
   ],
   imports: [
     CommonModule,
@@ -27,8 +29,9 @@ import { SellmodalComponent } from './components/sellmodal/sellmodal.component';
     MatToolbarModule,
     MatFormFieldModule,
     MatTableModule,
-    MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

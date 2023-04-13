@@ -1,6 +1,8 @@
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MoneymodalComponent } from '../moneymodal/moneymodal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
@@ -16,14 +18,11 @@ export class HeaderComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private userService: UserService) { }
+    private userService: UserService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    if (!!sessionStorage.getItem('userId')) {
-      this.userId = sessionStorage.getItem('userId')
-    }else{
-      this.userId = ''
-    }
+    this.userId = sessionStorage.getItem('userId')
     
     this.userService
       .getUserData(this.userId)
@@ -40,7 +39,7 @@ export class HeaderComponent implements OnInit {
             console.log(this.formatedBalance)
             this.fullname = data.fullname
           }else{
-            console.log("Usuario not found in dashboard")
+            console.log("User not found in dashboard")
           }
         },
         (err) => {
@@ -64,6 +63,10 @@ export class HeaderComponent implements OnInit {
     if (error.status === 500) {
        console.log(error)
     }
+  }
+
+  openMoneyModal(userId : string){
+    this.dialog.open(MoneymodalComponent, {data: {userId : userId}})
   }
 
 }

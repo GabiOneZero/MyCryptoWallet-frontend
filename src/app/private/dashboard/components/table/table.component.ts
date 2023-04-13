@@ -5,6 +5,7 @@ import { CurrencyService } from '../../services/currency.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BuymodalComponent } from '../buymodal/buymodal.component';
 import { SellmodalComponent } from '../sellmodal/sellmodal.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-table',
@@ -16,9 +17,11 @@ export class TableComponent implements AfterViewInit {
   dataSource: MatTableDataSource<CurrencyInterface>
   width: number = 8
   value: number
+  userId = sessionStorage.getItem('userId')
 
   constructor( 
     private currencyService: CurrencyService,
+    private userService: UserService,
     private dialog: MatDialog) { }
 
   ngAfterViewInit() {
@@ -26,15 +29,25 @@ export class TableComponent implements AfterViewInit {
     .getAllCurrencies()
     .subscribe(
       (data) => {
-        console.log("HELLO lista de comentarios")
+        console.log("HELLO currency list")
         console.log(data)
-        data.forEach(element => {
-          element.icon = "/assets/images/" + element.icon
-          this.value = +element.value
-          element.formatedValue =  this.value.toLocaleString('es-ES', {
+        data.forEach(currency => {
+          currency.icon = "/assets/images/" + currency.icon
+          this.value = +currency.value
+          currency.formatedValue =  this.value.toLocaleString('es-ES', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
           })
+          this.userService
+          .getWalletByIds(this.userId, currency.currencyId)
+          .subscribe(
+            (data) => {
+              if (!!data) {
+                currency.amount = data.amount
+              }else{
+                currency.amount = 0
+              }           
+            })
         })
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.filterPredicate = function(data, filter: string): boolean {
@@ -59,12 +72,12 @@ export class TableComponent implements AfterViewInit {
     }
   }
 
-  buy(currencyId: string){
-    this.dialog.open(BuymodalComponent, {data: {currencyId : currencyId}})
+  openBuy(currencyId: string, inWallet: number){
+    this.dialog.open(BuymodalComponent, {data: {currencyId : currencyId, inWallet : inWallet}})
   }
 
-  sell(currencyId: string){
-    this.dialog.open(SellmodalComponent, {data: {currencyId : currencyId}})
+  openSell(currencyId: string, inWallet: number, value: number){
+    this.dialog.open(SellmodalComponent, {data: {currencyId : currencyId, inWallet : inWallet, value : value}})
   }
 }
 

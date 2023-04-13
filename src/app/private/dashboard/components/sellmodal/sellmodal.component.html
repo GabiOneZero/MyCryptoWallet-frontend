@@ -1,2 +1,21 @@
-<p>sellmodal works!</p>
-<p>{{this.data.currencyId}}</p>
+<div class="modal-container">
+    <div class="info-container">
+        <img src="/assets/images/{{this.currency.icon}}" alt="icon" class="currency-icon">
+        <h1 class="login--card-title">{{this.currency.currencyName}}</h1>
+        <p class="login--card-title">{{this.currency.acronym}}</p>
+    </div> 
+    <form class="modal--sell-form" method="post">     
+        <input class="sell--input"
+            name="quantity"
+            [formControl] = "quantity"
+            type="number"
+            placeholder="Quantity" 
+            step="0.1"
+            min="0"
+            max="{{this.maxQuantity}}"
+            (keypress)="isNumberKey($event)"
+            (keypress)="controlMax()"
+            />
+        <button class="sell--button" type="submit" (click)="sell()">Sell</button>
+    </form>
+</div>

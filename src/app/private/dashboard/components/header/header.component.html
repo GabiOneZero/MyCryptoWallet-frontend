@@ -5,7 +5,7 @@
     </div>
     <div class="navbar navbar--user">
         <p>Welcome, {{this.fullname}}</p>
-        <p>Your balance: <button class="navbar--balance">{{ this.formatedBalance}}€</button></p>         
+        <p>Your balance: <button class="navbar--balance" (click)="openMoneyModal(this.userId)">{{ this.formatedBalance}}€</button></p>         
         <button class="navbar--logout" (click)="logout()">Log out</button>
     </div>
 </mat-toolbar>

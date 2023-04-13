@@ -4,8 +4,7 @@
     <input matInput 
             (keyup)="applyFilter($event)" 
             placeholder="Ex. Bitcoin" 
-            #input
-            formControlName="search">
+            #input>
   </mat-form-field>
 
   <div class="table-main mat-elevation-z8">
@@ -40,8 +39,10 @@
       <ng-container matColumnDef="buySell">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let row"> 
-          <button class="row-button row-buy-button" (click)="buy(row.currencyId)">Buy</button>  
-          <button class="row-button row-sell-button" (click)="sell(row.currencyId)">Sell</button>
+          <button class="row-button row-buy-button" (click)="openBuy(row.currencyId, row.amount)">Buy</button>  
+          <button class="row-button row-sell-button" 
+                  (click)="openSell(row.currencyId, row.amount, row.value)"
+                  [disabled]="row.amount==0">Sell</button>
         </td>
       </ng-container>
 
